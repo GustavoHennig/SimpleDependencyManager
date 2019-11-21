@@ -22,4 +22,43 @@ It uses the well known `@Inject` annotation,
  
 #### Examples
 
-There are examples of use in the unit tests.
+There are more examples of use in the unit tests.
+
+
+```java
+public class ServiceExample {
+
+    @Inject
+    private ServiceToInject serviceToInject;
+    private String injectByRule;
+}
+```
+
+
+```java
+public class ServiceToInject {
+    public int foo() {
+        return 1 + 1;
+    }
+}
+```
+
+Creates the instances automatically
+
+```java
+public class DependencyManagerReflectionTest {
+    @Test
+    public void test() {
+        DependencyManagerReflection dependencyManager = new DependencyManagerReflection();
+
+        // Configure an injection rule exception
+        String existingInstance = "existingInstance";
+        dependencyManager.addRule("injectByRule", String.class, existingInstance);
+        
+        ServiceExample serviceExample = dependencyManager.get(ServiceExample.class);
+        
+        assertEquals("must call the method of injected class", 2, serviceExample.callFoo());
+        assertSame("must be same instance", existingInstance, serviceExample.getInjectByRule());
+    }    
+}
+```

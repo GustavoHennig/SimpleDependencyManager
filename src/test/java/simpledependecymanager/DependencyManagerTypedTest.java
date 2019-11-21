@@ -2,11 +2,12 @@ package simpledependecymanager;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
 
 public class DependencyManagerTypedTest {
+
     @Test
     public void testDependencyCreatedAndReused() {
 
@@ -16,7 +17,7 @@ public class DependencyManagerTypedTest {
         InjectableDemo class2 = dependencyManager.get(InjectableDemo.class);
 
         assertNotNull("get should not return null", class1);
-        assertEquals("get should return same instance", class1, class2);
+        assertSame("get should return same instance", class1, class2);
     }
 
     @Test
@@ -32,7 +33,7 @@ public class DependencyManagerTypedTest {
 
         assertNotNull("get should not return null", class1);
 
-        assertNotEquals("differente dependency managers should return different instances", class1, class2);
+        assertNotSame("differente dependency managers should return different instances", class1, class2);
     }
 
     @Test
@@ -51,7 +52,7 @@ public class DependencyManagerTypedTest {
         InjectableDemo class2 = dependencyManager.get(InjectableDemo.class);
 
         assertNotNull("get should not return null", class1);
-        assertEquals("get should return same instance", class1, class2);
+        assertSame("get should return same instance", class1, class2);
     }
 
     @Test
@@ -63,7 +64,7 @@ public class DependencyManagerTypedTest {
         InjectableDemo2 class2 = dependencyManager.get(InjectableDemo2.class);
 
         assertNotNull("get should not return null", class1);
-        assertEquals("get should return same instance", class1, class2.getInjectableDemo());
+        assertSame("get should return same instance", class1, class2.getInjectableDemo());
     }
 
     @Test
@@ -75,5 +76,4 @@ public class DependencyManagerTypedTest {
 
         assertNotNull("get should not return null", class2.getInjectableDemo());
     }
-
 }
