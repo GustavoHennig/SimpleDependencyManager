@@ -6,9 +6,9 @@ This project contains two different implementations of Dependency Injection.
 
 ##### DependencyManagerTyped
 
-It is performatic and typed, without the use of reflection.
+It is more performative because it is typed, without the use of reflection.
 
-Works passing the Manager to the constructor of every Business Login Service.
+Works passing the `Manager` to the constructor of every Business Logic Service.
 
 
 ##### DependencyManagerReflection
@@ -18,6 +18,8 @@ Works passing the Manager to the constructor of every Business Login Service.
 It uses the well known `@Inject` annotation,
  the injector will try to create automatically on every attribute 
  with this annotation when the type has constructor without arguments.
+ 
+This solution was created for simple integration testes, but can be used in large project.
  
  
 #### Examples
