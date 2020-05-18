@@ -2,17 +2,24 @@
 ### Simply Dependency Manager
 
 
-This project contains two different implementations of Dependency Injection.
+This project contains two different implementations of Dependency Injection. 
+
+
 
 ##### DependencyManagerTyped
 
-It is more performative because it is typed, without the use of reflection.
+This implementation is more like a service locator. It is more performative because it is typed, without the use of reflection.
 
 Works passing the `Manager` to the constructor of every Business Logic Service.
 
+Example:
+https://github.com/GustavoHennig/SimpleDependencyManager/blob/master/src/test/java/simpledependecymanager/DependencyManagerTypedTest.java
+
+I found a post that explains the concept better:
+https://proandroiddev.com/why-service-locator-is-so-unpopular-bbe8678be72c
+
 
 ##### DependencyManagerReflection
-
 
 
 It uses the well known `@Inject` annotation,
@@ -24,7 +31,7 @@ This solution was created for simple integration testes, but can be used in larg
  
 #### Examples
 
-There are more examples of use in the unit tests.
+Examples of how to use (Reflection version).
 
 
 ```java
@@ -64,3 +71,9 @@ public class DependencyManagerReflectionTest {
     }    
 }
 ```
+
+
+Please, see the unit tests of this project for more examples:
+
+https://github.com/GustavoHennig/SimpleDependencyManager/tree/master/src/test/java/simpledependecymanager
+
